@@ -12,6 +12,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 cactusblack: ["cactusblack", "cursive"],
+                GothamLight: ["GothamLight", "sans-serif"],
+                GothamBold: ["GothamBold", "cursive"],
             },
         },
     },

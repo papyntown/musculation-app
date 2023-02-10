@@ -6,3 +6,11 @@
     font-family: 'cactusblack';
     src: url('../public/fonts/cactusblack.ttf');
 }
+@font-face {
+    font-family: 'GothamLight';
+    src: url('../public/fonts/GothamLight.ttf');
+}
+@font-face {
+    font-family: 'GothamBold';
+    src: url('../public/fonts/GothamBold.ttf');
+}
