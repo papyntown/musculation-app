@@ -1,56 +1,52 @@
+import BodyPartList from "@/components/BodyPartList";
 import { exerciceOptions, fetchData } from "@/components/FetchData";
 import Meta from "@/components/Meta";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const index = () => {
     const [inputValue, setInputValue] = useState("");
-    const [exerciseData, setExerciceData] = useState();
+    const [exercices, setExercices] = useState([]);
+    const [bodyPartList, setBodyPartList] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault(e);
     };
 
-    // const options = {
-    //     method: "GET",
-    //     url: `https://exercisedb.p.rapidapi.com/exercises/bodyPartList`,
-    //     headers: {
-    //         "X-RapidAPI-Key":
-    //             "d153d6b6b7mshb1d2247b5110942p198e6ejsn5367cbd85007",
-    //         "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
-    //     },
-    // };
-    // const getData = () => {
-    //     console.log(inputValue);
-    //     if (inputValue) {
-    //         axios
-    //             .request(options)
-    //             .then((response) => {
-    //                 console.log(response.data);
-    //                 setExerciceData(response.data);
-    //             })
-    //             .catch(function (error) {
-    //                 console.error(error);
-    //             });
-    //     }
-    // };
+    useEffect(() => {
+        const fetchExerciceData = async () => {
+            const bodyPartData = await fetchData(
+                "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+                exerciceOptions
+            );
+            setBodyPartList(["All", ...bodyPartData]);
+        };
+        fetchExerciceData();
+    }, []);
+
     const getData = async () => {
         console.log(inputValue);
         if (inputValue) {
-            //const exerciseData =
-            setExerciceData(
-                await fetchData(
-                    "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-                    exerciceOptions
-                )
+            const exerciseData = await fetchData(
+                "https://exercisedb.p.rapidapi.com/exercises",
+                exerciceOptions
             );
             console.log(exerciseData);
+            const searchedExercices = exerciseData.filter(
+                (exercice) =>
+                    exercice.name.toLowerCase().includes(inputValue) ||
+                    exercice.target.toLowerCase().includes(inputValue) ||
+                    exercice.equipment.toLowerCase().includes(inputValue) ||
+                    exercice.bodyPart.toLowerCase().includes(inputValue)
+            );
+            setInputValue("");
+            setExercices(searchedExercices);
         }
     };
 
     return (
         <div>
             <Meta />
-            <div className=" bg-slate-100 h-screen  font-GothamLight  ">
+            <div className="   font-GothamLight  ">
                 <div className="container w-11/12 mx-auto  pt-4">
                     <h1 className="text-5xl mb-7 lg:text-9xl font-cactusblack text-center  italic tracking-widest ">
                         TROUVE TON{" "}
@@ -95,6 +91,11 @@ const index = () => {
                             </div>
                         </div>
                     </form>
+                </div>
+                <div className="wrapper md:overflow-x-visible  mt-2 mx-auto  ">
+                    {bodyPartList.map((bodyPart, index) => (
+                        <BodyPartList key={index} bodyPart={bodyPart} />
+                    ))}
                 </div>
             </div>
         </div>
