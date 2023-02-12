@@ -7,7 +7,7 @@ const BodyPartList = ({ bodyPart }) => {
     const nospace = bodyPart.replace(/\s+/g, "");
 
     return (
-        <div className="carousel-item rounded-xl item ">
+        <div className="carousel-item rounded-xl item  ">
             <div className="img">
                 {
                     <Image
@@ -16,11 +16,11 @@ const BodyPartList = ({ bodyPart }) => {
                         alt={bodyPart}
                         width={100}
                         height={100}
-                        className=" w-28 h-48 "
+                        className=" w-28 h-48 lg:w-48 lg:h-64 "
                     />
                 }
             </div>
-            <h2>{bodyPart}</h2>
+            <h2>{bodyPart.charAt(0).toUpperCase() + bodyPart.slice(1)}</h2>
         </div>
     );
 };

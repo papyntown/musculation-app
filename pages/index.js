@@ -48,12 +48,9 @@ const index = () => {
             <Meta />
             <div className="   font-GothamLight  ">
                 <div className="container w-11/12 mx-auto  pt-4">
-                    <h1 className="text-5xl mb-7 lg:text-9xl font-cactusblack text-center  italic tracking-widest ">
-                        TROUVE TON{" "}
-                        <span className="text-yellow-300">
-                            {" "}
-                            EXERCICE MAINTENANT !
-                        </span>
+                    <h1 className="text-5xl mb-7 lg:text-9xl font-cactusblack text-center italic tracking-widest ">
+                        FIND YOUR{" "}
+                        <span className="text-yellow-300"> EXERCISE NOW!</span>
                     </h1>
                     <form
                         className="mx-auto flex  "
@@ -92,7 +89,7 @@ const index = () => {
                         </div>
                     </form>
                 </div>
-                <div className="wrapper md:overflow-x-visible  mt-2 mx-auto  ">
+                <div className="wrapper   mt-2 mx-auto  ">
                     {bodyPartList.map((bodyPart, index) => (
                         <BodyPartList key={index} bodyPart={bodyPart} />
                     ))}
