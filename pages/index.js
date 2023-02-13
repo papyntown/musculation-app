@@ -3,8 +3,12 @@ import { exerciceOptions, fetchData } from "@/components/FetchData";
 import Meta from "@/components/Meta";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const index = () => {
+    const bodyPartFilter = useSelector(
+        (state) => state.bodyPartFilter.bodyPartFilter
+    );
     const [inputValue, setInputValue] = useState("");
     const [exercices, setExercices] = useState([]);
     const [bodyPartList, setBodyPartList] = useState([]);
@@ -89,11 +93,12 @@ const index = () => {
                         </div>
                     </form>
                 </div>
-                <div className="wrapper   mt-2 mx-auto  ">
+                <div className="wrapper  mt-2 mx-auto  ">
                     {bodyPartList.map((bodyPart, index) => (
                         <BodyPartList key={index} bodyPart={bodyPart} />
                     ))}
                 </div>
+                <h1>{bodyPartFilter}</h1>
             </div>
         </div>
     );

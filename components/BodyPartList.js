@@ -1,18 +1,21 @@
 import { path } from "@/config";
-import axios from "axios";
+import { setBodyPartFilter } from "@/feature/bodyPartFilter.Slice";
 import Image from "next/image";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const BodyPartList = ({ bodyPart }) => {
     const nospace = bodyPart.replace(/\s+/g, "");
+    const dispatch = useDispatch();
 
     return (
-        <div className="carousel-item rounded-xl item  ">
+        <div
+            className="carousel-item rounded-xl item hover:font-GothamBold hover:text-yellow-300"
+            onClick={() => dispatch(setBodyPartFilter(bodyPart))}>
             <div className="img">
                 {
                     <Image
                         src={`${path}/img/noback/${nospace}.png`}
-                        // src={`${path}/img/${nospace}.png`}
                         alt={bodyPart}
                         width={100}
                         height={100}

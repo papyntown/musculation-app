@@ -3,7 +3,7 @@
     padding: 25px 0px;
     margin: 2rem auto 2rem auto;
     display: flex;
-    overflow-x: hidden;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
@@ -22,6 +22,9 @@
         box-shadow: rgb(202, 178, 56) 0px 10px 15px -5px;
     }
 }
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
 
 @media (min-width: 1024px) {
     .wrapper {
@@ -31,6 +34,7 @@
     }
     .wrapper::-webkit-scrollbar {
         width: 16px;
+        display: block;
     }
 
     .wrapper::-webkit-scrollbar-track {
