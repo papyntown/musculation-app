@@ -1,39 +1,27 @@
 import BodyPartList from "@/components/BodyPartList";
+import Exercices from "@/components/Exercices";
 import { exerciceOptions, fetchData } from "@/components/FetchData";
 import Meta from "@/components/Meta";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const index = () => {
+const index = ({ bodyPartListServ, exerciceDataServ }) => {
     const bodyPartFilter = useSelector(
         (state) => state.bodyPartFilter.bodyPartFilter
     );
+    const [exerciseData, setExerciceData] = useState(exerciceDataServ);
     const [inputValue, setInputValue] = useState("");
     const [exercices, setExercices] = useState([]);
-    const [bodyPartList, setBodyPartList] = useState([]);
+    const [bodyPartList, setBodyPartList] = useState(bodyPartListServ);
     const handleSubmit = (e) => {
         e.preventDefault(e);
     };
 
-    useEffect(() => {
-        const fetchExerciceData = async () => {
-            const bodyPartData = await fetchData(
-                "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-                exerciceOptions
-            );
-            setBodyPartList(["All", ...bodyPartData]);
-        };
-        fetchExerciceData();
-    }, []);
-
     const getData = async () => {
-        console.log(inputValue);
+        console.log(exerciseData);
+
         if (inputValue) {
-            const exerciseData = await fetchData(
-                "https://exercisedb.p.rapidapi.com/exercises",
-                exerciceOptions
-            );
             console.log(exerciseData);
             const searchedExercices = exerciseData.filter(
                 (exercice) =>
@@ -43,6 +31,8 @@ const index = () => {
                     exercice.bodyPart.toLowerCase().includes(inputValue)
             );
             setInputValue("");
+            console.log("la recherche a etait effectuer");
+            console.log(searchedExercices);
             setExercices(searchedExercices);
         }
     };
@@ -94,14 +84,45 @@ const index = () => {
                     </form>
                 </div>
                 <div className="wrapper  mt-2 mx-auto  ">
-                    {bodyPartList.map((bodyPart, index) => (
-                        <BodyPartList key={index} bodyPart={bodyPart} />
-                    ))}
+                    {bodyPartList &&
+                        bodyPartList.map((bodyPart, index) => (
+                            <BodyPartList key={index} bodyPart={bodyPart} />
+                        ))}
                 </div>
+                {exerciseData ? (
+                    <Exercices
+                        exerciseData={exerciseData}
+                        exercices={exercices}
+                        bodyPartList={bodyPartList}
+                    />
+                ) : (
+                    "please wait"
+                )}
                 <h1>{bodyPartFilter}</h1>
             </div>
         </div>
     );
+};
+
+export const getStaticProps = async () => {
+    const bodyPartData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+        exerciceOptions
+    );
+    const bodyPartListServ = await ["All", ...bodyPartData];
+    const exerciceDataServ = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises",
+        exerciceOptions
+    );
+    // console.log(exerciceDataServ);
+    // console.log(bodyPartListServ);
+
+    return {
+        props: {
+            bodyPartListServ: bodyPartListServ,
+            exerciceDataServ: exerciceDataServ,
+        },
+    };
 };
 
 export default index;

@@ -1,17 +1,27 @@
 import { path } from "@/config";
 import { setBodyPartFilter } from "@/feature/bodyPartFilter.Slice";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const BodyPartList = ({ bodyPart }) => {
+    const bodyPartFilter = useSelector(
+        (state) => state.bodyPartFilter.bodyPartFilter
+    );
+
     const nospace = bodyPart.replace(/\s+/g, "");
     const dispatch = useDispatch();
 
     return (
         <div
-            className="carousel-item rounded-xl item hover:font-GothamBold hover:text-yellow-300"
-            onClick={() => dispatch(setBodyPartFilter(bodyPart))}>
+            className={` ${
+                bodyPart === bodyPartFilter ? "selected" : ""
+            } carousel-item rounded-xl item hover:font-GothamBold hover:text-yellow-300`}
+            onClick={() => {
+                dispatch(setBodyPartFilter(bodyPart));
+                window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+            }}>
             <div className="img">
                 {
                     <Image

@@ -25,6 +25,11 @@
 .wrapper::-webkit-scrollbar {
     display: none;
 }
+.selected {
+    font-weight: bold;
+    color: #fde047;
+    box-shadow: rgba(202, 178, 56, 0.455) 0px 10px 8px -5px !important;
+}
 
 @media (min-width: 1024px) {
     .wrapper {
