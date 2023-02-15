@@ -20,7 +20,7 @@ const BodyPartList = ({ bodyPart }) => {
             } carousel-item rounded-xl item hover:font-GothamBold hover:text-yellow-300`}
             onClick={() => {
                 dispatch(setBodyPartFilter(bodyPart));
-                window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+                window.scrollTo({ top: 550, left: 100, behavior: "smooth" });
             }}>
             <div className="img">
                 {

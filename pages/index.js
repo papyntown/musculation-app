@@ -17,22 +17,26 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
     const handleSubmit = (e) => {
         e.preventDefault(e);
     };
+    console.log(exerciseData);
 
     const getData = async () => {
-        console.log(exerciseData);
-
         if (inputValue) {
-            console.log(exerciseData);
             const searchedExercices = exerciseData.filter(
                 (exercice) =>
-                    exercice.name.toLowerCase().includes(inputValue) ||
-                    exercice.target.toLowerCase().includes(inputValue) ||
-                    exercice.equipment.toLowerCase().includes(inputValue) ||
-                    exercice.bodyPart.toLowerCase().includes(inputValue)
+                    exercice.name
+                        .toLowerCase()
+                        .includes(inputValue.toLocaleLowerCase()) ||
+                    exercice.target
+                        .toLowerCase()
+                        .includes(inputValue.toLocaleLowerCase()) ||
+                    exercice.equipment
+                        .toLowerCase()
+                        .includes(inputValue.toLocaleLowerCase()) ||
+                    exercice.bodyPart
+                        .toLowerCase()
+                        .includes(inputValue.toLocaleLowerCase())
             );
             setInputValue("");
-            console.log("la recherche a etait effectuer");
-            console.log(searchedExercices);
             setExercices(searchedExercices);
         }
     };
@@ -40,7 +44,7 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
     return (
         <div>
             <Meta />
-            <div className="   font-GothamLight  ">
+            <div className="font-GothamLight  ">
                 <div className="container w-11/12 mx-auto  pt-4">
                     <h1 className="text-5xl mb-7 lg:text-9xl font-cactusblack text-center italic tracking-widest ">
                         FIND YOUR{" "}
