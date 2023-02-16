@@ -1,5 +1,6 @@
 .card-containers {
     .card-exercice {
+        border-radius: 10px;
         padding: 20px;
         transform: translateY(-10px);
         opacity: 0;
@@ -18,6 +19,29 @@
                 background-color: #fde047; // Définit la couleur de fond de l'élément
                 z-index: 1; // Élévation au-dessus de la carte
                 border-radius: 20px;
+            }
+        }
+        .exercice-name {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .card-target {
+            margin: 0rem 4px 1rem 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .btn {
+                border-radius: 4rem;
+            }
+            .first-btn {
+                background-color: #4e5668;
+                &:hover {
+                    background-color: #3c4251;
+                }
+            }
+            .second-btn {
+                color: #fde047;
             }
         }
     }

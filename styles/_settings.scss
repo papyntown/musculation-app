@@ -1,8 +1,6 @@
 body {
     height: 100vh;
     color: #1d2424;
-
-    background-color: #f1f5f9;
 }
 html {
     overflow-x: hidden;
@@ -22,6 +20,7 @@ html {
 
 *::-webkit-scrollbar-track {
     background: #f1f5f9;
+    border-radius: 20px;
 }
 
 *::-webkit-scrollbar-thumb {
