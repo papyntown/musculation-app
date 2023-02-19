@@ -7,7 +7,6 @@ const Exercices = ({ exerciseData, exercices, bodyPartList }) => {
         (state) => state.bodyPartFilter.bodyPartFilter
     );
     const [scrollCard, setscrollCard] = useState(12);
-    console.log(exercices);
 
     useEffect(() => {
         const watcher = document.getElementById("watcher");
