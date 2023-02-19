@@ -10,7 +10,8 @@ const Meta = ({ title, description }) => {
     );
 };
 Meta.defaultProps = {
-    title: "Strength Training Exercise Library with Animated Gifs & Descriptions",
+    title: "Fitforces",
+    // title: "Strength Training Exercise Library with Animated Gifs & Descriptions",
     description:
         "Discover the best strength training exercises with our comprehensive list. Each exercise comes with a clear description and helpful animated gifs to guide you through proper form and technique. Improve your workout and build muscle with our user-friendly exercise library.",
 };

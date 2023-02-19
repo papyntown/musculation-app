@@ -1,16 +1,22 @@
+import { setexerciceId } from "@/feature/exerciceId.Slice";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const Card = ({ exercice }) => {
+    const dispatch = useDispatch();
     return (
-        <Link href={`/exercice/[id]`} as={`exercice/${exercice.id}`}>
-            <div className="card-exercice">
+        <Link
+            href={`/exercice/[exerciceDetail]`}
+            as={`exercice/${exercice.name.split(" ").join("-").toLowerCase()}`}
+            onClick={() => dispatch(setexerciceId(exercice))}>
+            <div className="card-exercice sm:h-96">
                 <Image
                     src={`${exercice.gifUrl}`}
                     alt={exercice.name}
-                    width={400}
-                    height={400}
+                    width={350}
+                    height={350}
                     className=""
                 />
                 <div className="card-target">

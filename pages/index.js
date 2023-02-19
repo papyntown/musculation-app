@@ -17,7 +17,7 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
     const handleSubmit = (e) => {
         e.preventDefault(e);
     };
-    console.log(exerciseData);
+    //    console.log(exerciseData);
 
     const getData = async () => {
         if (inputValue) {
@@ -118,8 +118,6 @@ export const getStaticProps = async () => {
         "https://exercisedb.p.rapidapi.com/exercises",
         exerciceOptions
     );
-    // console.log(exerciceDataServ);
-    // console.log(bodyPartListServ);
 
     return {
         props: {

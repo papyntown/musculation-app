@@ -57,3 +57,9 @@
         transform: translateY(0);
     }
 }
+
+@media (min-width: 640px) {
+    .card-exercice {
+        height: 420px;
+    }
+}

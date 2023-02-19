@@ -1,0 +1,33 @@
+.videos-container {
+    margin-top: 20px;
+    text-align: center;
+    h3 {
+        color: #3b444b;
+        margin: 1rem 0px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: capitalize;
+        span {
+            color: #fde047;
+        }
+    }
+    .video {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 640px) {
+    .videos-container {
+        margin-top: 50px;
+        h3 {
+            font-size: 1.8rem !important;
+        }
+        .video {
+            flex-direction: row;
+            gap: 110px;
+        }
+    }
+}
