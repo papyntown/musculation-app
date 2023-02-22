@@ -11,7 +11,7 @@ const Card = ({ exercice }) => {
             href={`/exercice/[exerciceDetail]`}
             as={`exercice/${exercice.id}`}
             onClick={() => dispatch(setexerciceId(exercice))}>
-            <div className="card-exercice sm:h-96">
+            <div className="card-exercice ">
                 <Image
                     src={`${exercice.gifUrl}`}
                     alt={exercice.name}
@@ -23,11 +23,17 @@ const Card = ({ exercice }) => {
                     <button className=" btn first-btn">
                         {exercice.bodyPart}
                     </button>
-                    <button className=" btn  second-btn">
+                    <button
+                        className={` btn  second-btn ${
+                            exercice.target.length > 14 ? "small-text" : ""
+                        }`}>
                         {exercice.target}
                     </button>
                 </div>
-                <h3 className="exercice-name font-GothamBold">
+                <h3
+                    className={`${
+                        exercice.name.length > 40 ? "small-title" : ""
+                    } exercice-name font-GothamBold `}>
                     {exercice.name.charAt(0).toUpperCase() +
                         exercice.name.slice(1)}
                 </h3>

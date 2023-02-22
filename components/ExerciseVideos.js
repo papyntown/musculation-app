@@ -28,7 +28,7 @@ const ExerciseVideos = ({ exerciceVideos, name }) => {
                         </a>
                     ))
                 ) : (
-                    <h1>Waiting</h1>
+                    <h3>Waiting</h3>
                 )}
             </div>
         </div>
