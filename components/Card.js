@@ -9,7 +9,7 @@ const Card = ({ exercice }) => {
     return (
         <Link
             href={`/exercice/[exerciceDetail]`}
-            as={`exercice/${exercice.name.split(" ").join("-").toLowerCase()}`}
+            as={`exercice/${exercice.id}`}
             onClick={() => dispatch(setexerciceId(exercice))}>
             <div className="card-exercice sm:h-96">
                 <Image
