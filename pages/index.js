@@ -12,12 +12,12 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
     );
     const [exerciseData, setExerciceData] = useState(exerciceDataServ);
     const [inputValue, setInputValue] = useState("");
-    const [exercices, setExercices] = useState([]);
+    const [exerciseDataFiltered, setExerciseDataFiltered] =
+        useState(exerciceDataServ);
     const [bodyPartList, setBodyPartList] = useState(bodyPartListServ);
     const handleSubmit = (e) => {
         e.preventDefault(e);
     };
-    //    console.log(exerciseData);
 
     const getData = async () => {
         if (inputValue) {
@@ -37,7 +37,8 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
                         .includes(inputValue.toLocaleLowerCase())
             );
             setInputValue("");
-            setExercices(searchedExercices);
+            setExerciseDataFiltered(searchedExercices);
+            window.scrollTo({ top: 550, left: 100, behavior: "smooth" });
         }
     };
 
@@ -50,6 +51,7 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
                         FIND YOUR{" "}
                         <span className="text-yellow-300"> EXERCISE NOW!</span>
                     </h1>
+
                     <form
                         className="mx-auto flex  "
                         onSubmit={(e) => {
@@ -61,6 +63,7 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
                                 <input
                                     type="text"
                                     placeholder="Search your exercices"
+                                    value={inputValue}
                                     className=" font-GothamBold transition-all duration-300 text-2xl bg-slate-700 py-4 px-4 rounded-lg
                                     focus:outline-none focus:shadow-outline focus:rounded-2xl   block w-full text-center 
                                     lg:text-left lg:w-2/4   text-slate-200 appearance-none leading-normal"
@@ -96,13 +99,12 @@ const index = ({ bodyPartListServ, exerciceDataServ }) => {
                 {exerciseData ? (
                     <Exercices
                         exerciseData={exerciseData}
-                        exercices={exercices}
                         bodyPartList={bodyPartList}
+                        exerciseDataFiltered={exerciseDataFiltered}
                     />
                 ) : (
                     "please wait"
                 )}
-                <h1>{bodyPartFilter}</h1>
             </div>
         </div>
     );
