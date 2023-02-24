@@ -1,7 +1,7 @@
 import React from "react";
 
 const SimilarExercices = () => {
-    return <div></div>;
+    return <div> Similar exercice</div>;
 };
 
 export default SimilarExercices;

@@ -15,7 +15,8 @@ const ExerciseVideos = ({ exerciceVideos, name }) => {
                         <a
                             key={index}
                             href={`https://www.youtube.com/watch?v=${video.video.videoId}`}
-                            className="exercice-video"
+                            className="exercice-video "
+                            style={{ wordWrap: "break-word" }}
                             target={"_blank"}
                             rel={"noreferrer"}>
                             <Image
@@ -25,6 +26,12 @@ const ExerciseVideos = ({ exerciceVideos, name }) => {
                                 height={350}
                                 className=""
                             />
+                            <h5 className={`video-title `}>
+                                {video.video.title}
+                            </h5>
+                            <h6 className="video-channel">
+                                {video.video.channelName}
+                            </h6>
                         </a>
                     ))
                 ) : (
